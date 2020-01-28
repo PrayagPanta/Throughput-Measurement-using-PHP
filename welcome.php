@@ -13,7 +13,6 @@
     $load = sys_getloadavg();
     return $load[0];
    }
-   $frequencyofaccess = 0;
    $name=$email="";
    $ncounter=$counter=0;
    if(isset($_POST['submit']) ) {
