@@ -42,7 +42,7 @@
               $time=time().",".get_server_memory_usage().",".get_server_cpu_usage()."\n";
               fwrite($success,$time);    
        }  else{
-        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+        echo "ERROR: Was not able to execute $sql. " . mysqli_error($link);
               $time=time().",".get_server_memory_usage().",".get_server_cpu_usage()."\n";
               fwrite($fail,$time);
       }  
