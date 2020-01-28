@@ -28,6 +28,7 @@
           fwrite($fail,$time);
           exit("Server is Down. Please Try again Later");
       }
+      echo "Initial Resource Usage". ":" . get_server_memory_usage().",".get_server_cpu_usage()."< br />";
       for ( $x =1 ; $x <= $times ; $x=$x+1)
        {
       $sql = "INSERT INTO cl (NAME, EMAIL) VALUES ('$name','$email')";
