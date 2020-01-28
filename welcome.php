@@ -23,11 +23,10 @@
       $success = fopen("success.txt","a");
       $fail = fopen("fail.txt","a");
       $link = mysqli_connect("localhost", "root", "", "cloud");
-      if ($link->connect_error)
+      if ($link->connect_error || $success == NULL || $fail == NULL )
       {
           $time=time().",".get_server_memory_usage().",".get_server_cpu_usage()."\n";
           fwrite(fail,$time);
-          $ncounter++;
           exit("Server is Down. Please Try again Later");
       }
       for ( $x =1 ; $x <= $times ; $x=$x+1)
