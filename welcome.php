@@ -15,7 +15,7 @@
    }
    $frequencyofaccess = 0;
    $name=$email="";
-   $times=$counter=0;
+   $ncounter=$counter=0;
    if(isset($_POST['submit']) ) {
       $name=$_POST['name'];
       $email=$_POST['email'];
@@ -27,25 +27,27 @@
       {
           $time=time().",".get_server_memory_usage().",".get_server_cpu_usage()."\n";
           fwrite(fail,$time);
+          $ncounter++;
+          exit("Server is Down. Please Try again Later");
       }
       for ( $x =1 ; $x <= $times ; $x=$x+1)
        {
-      echo time();
       $sql = "INSERT INTO cl (NAME, EMAIL) VALUES ('$name','$email')";
-      echo "Insertion Info : <br/>";
-      echo "Name: " . $_POST['name'] . "<br />" ;
-      echo "Last name: " . $_POST['email'] . "<br /> ";
-      echo " Number of Successful Insertions in database:". $counter. "<br /> ";
-      echo "Memory Usage of system ".get_server_memory_usage() . "<br />";
-      echo "CPU Usage of system ".get_server_cpu_usage() . "<br />";
       if(mysqli_query($link, $sql)){
               $time=time().",".get_server_memory_usage().",".get_server_cpu_usage()."\n";
               fwrite($success,$time);    
+              $counter++;
        }  else{
         echo "ERROR: Was not able to execute $sql. " . mysqli_error($link);
               $time=time().",".get_server_memory_usage().",".get_server_cpu_usage()."\n";
               fwrite($fail,$time);
+              $ncounter++;
       }  
       }
+      echo "Insertion Info : <br/>";
+      echo "Name: " . $_POST['name'] . "<br />" ;
+      echo "Last name: " . $_POST['email'] . "<br /> ";
+      echo " Number of Successful Insertions in database:". $counter. "<br /> ";
+      echo " Number of Failures: ". $ncounter;
       }  
 ?>
