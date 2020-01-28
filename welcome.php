@@ -25,7 +25,7 @@
       if ($link->connect_error || $success == NULL || $fail == NULL )
       {
           $time=time().",".get_server_memory_usage().",".get_server_cpu_usage()."\n";
-          fwrite(fail,$time);
+          fwrite($fail,$time);
           exit("Server is Down. Please Try again Later");
       }
       for ( $x =1 ; $x <= $times ; $x=$x+1)
